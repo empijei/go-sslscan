@@ -1,5 +1,17 @@
 package scanner
 
+import "github.com/empijei/go-sslscan/scanner/tls_dirty"
+
+type ProtVersion uint16
+
+//go:generate stringer -type ProtVersion
+const (
+	SSL30 ProtVersion = tls_dirty.VersionSSL30
+	TLS10 ProtVersion = tls_dirty.VersionTLS10
+	TLS11 ProtVersion = tls_dirty.VersionTLS11
+	TLS12 ProtVersion = tls_dirty.VersionTLS12
+)
+
 type CipherSuite struct {
 	ID       uint16
 	Name     string

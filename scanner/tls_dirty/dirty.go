@@ -158,3 +158,7 @@ func (c *Conn) GetServerHello(clientHello *ClientHelloMsg) (*ServerHelloMsg, err
 func (sh *ServerHelloMsg) CipherSuite() uint16 {
 	return sh.cipherSuite
 }
+
+func (c *Conn) SetMaxVersion(version uint16) {
+	c.config.MaxVersion = version
+}

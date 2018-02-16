@@ -23,3 +23,29 @@ TLS_DES_CBC3_SHA
 SSL_AES256_SHA
 SSL_AES128_SHA
 SSL_DES_CBC3_SHA
+
+Preferred TLSv1.2  256 bits  ECDHE-RSA-AES256-GCM-SHA384   Curve P-256 DHE 256
+Accepted  TLSv1.2  256 bits  ECDHE-RSA-AES256-SHA          Curve P-256 DHE 256
+Accepted  TLSv1.2  256 bits  AES256-GCM-SHA384            
+Accepted  TLSv1.2  256 bits  AES256-SHA                   
+Accepted  TLSv1.2  128 bits  ECDHE-RSA-AES128-GCM-SHA256   Curve P-256 DHE 256
+Accepted  TLSv1.2  128 bits  ECDHE-RSA-AES128-SHA          Curve P-256 DHE 256
+Accepted  TLSv1.2  128 bits  AES128-GCM-SHA256            
+Accepted  TLSv1.2  128 bits  AES128-SHA                   
+Accepted  TLSv1.2  112 bits  ECDHE-RSA-DES-CBC3-SHA        Curve P-256 DHE 256
+Accepted  TLSv1.2  112 bits  DES-CBC3-SHA                 
+Preferred TLSv1.1  256 bits  ECDHE-RSA-AES256-SHA          Curve P-256 DHE 256
+Accepted  TLSv1.1  256 bits  AES256-SHA                   
+Accepted  TLSv1.1  128 bits  ECDHE-RSA-AES128-SHA          Curve P-256 DHE 256
+Accepted  TLSv1.1  128 bits  AES128-SHA                   
+Accepted  TLSv1.1  112 bits  ECDHE-RSA-DES-CBC3-SHA        Curve P-256 DHE 256
+Accepted  TLSv1.1  112 bits  DES-CBC3-SHA                 
+Preferred TLSv1.0  256 bits  ECDHE-RSA-AES256-SHA          Curve P-256 DHE 256
+Accepted  TLSv1.0  256 bits  AES256-SHA                   
+Accepted  TLSv1.0  128 bits  ECDHE-RSA-AES128-SHA          Curve P-256 DHE 256
+Accepted  TLSv1.0  128 bits  AES128-SHA                   
+Accepted  TLSv1.0  112 bits  ECDHE-RSA-DES-CBC3-SHA        Curve P-256 DHE 256
+Accepted  TLSv1.0  112 bits  DES-CBC3-SHA                 
+Preferred SSLv3    256 bits  AES256-SHA                   
+Accepted  SSLv3    128 bits  AES128-SHA                   
+Accepted  SSLv3    112 bits  DES-CBC3-SHA                 
