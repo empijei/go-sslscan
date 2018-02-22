@@ -8,7 +8,7 @@ import (
 )
 
 func ScanHost(hostport string) ([]CipherSuite, error) {
-	suites := SSL3_TLS_CipherSuites.IDsMap()
+	suites := TLS_CipherSuites.IDsMap()
 	protocols := []ProtVersion{
 		SSL30,
 		TLS10,

@@ -63,7 +63,7 @@ func TestScanHost(t *testing.T) {
 	}
 	for i, c := range cs {
 		if expected[i] != c.Name {
-			t.Error("ScanHost: expected <%s> in position %d but got <%s>", expected[i], i, c.Name)
+			t.Errorf("ScanHost: expected <%s> in position %d but got <%s>", expected[i], i, c.Name)
 		}
 	}
 }

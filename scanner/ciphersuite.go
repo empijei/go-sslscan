@@ -1,6 +1,10 @@
 package scanner
 
-import "github.com/empijei/go-sslscan/scanner/tls_dirty"
+import (
+	"sort"
+
+	"github.com/empijei/go-sslscan/scanner/tls_dirty"
+)
 
 type ProtVersion uint16
 
@@ -12,6 +16,25 @@ const (
 	TLS12 ProtVersion = tls_dirty.VersionTLS12
 )
 
+var AllCiphersMap = make(map[uint16]CipherSuite)
+var AllCiphers CipherSuites
+
+func init() {
+	for _, c := range TLS_CipherSuites {
+		AllCiphersMap[c.ID] = c
+	}
+	for _, c := range IANA_CipherSuites {
+		AllCiphersMap[c.ID] = c
+	}
+	AllCiphers = make([]CipherSuite, len(AllCiphersMap))
+	i := 0
+	for _, c := range AllCiphersMap {
+		AllCiphers[i] = c
+		i++
+	}
+	sort.Sort(ByID(AllCiphers))
+}
+
 type CipherSuite struct {
 	ID       uint16
 	Name     string
@@ -21,6 +44,20 @@ type CipherSuite struct {
 	Enc      Encryption
 	Bits     int
 	Mac      Mac
+}
+
+type ByID CipherSuites
+
+func (b ByID) Len() int {
+	return len(b)
+}
+
+func (b ByID) Less(i int, j int) bool {
+	return b[i].ID < b[j].ID
+}
+
+func (b ByID) Swap(i int, j int) {
+	b[i], b[j] = b[j], b[i]
 }
 
 type CipherSuites []CipherSuite
@@ -67,6 +104,7 @@ type KeyExchange int
 const (
 	KX_DH KeyExchange = iota
 	KX_DHE
+	KX_ECCPWD
 	KX_ECDH
 	KX_ECDHE
 	KX_FORTEZZA
@@ -88,8 +126,11 @@ type Authentication int
 //go:generate stringer -type=Authentication
 const (
 	AU_ANON Authentication = iota
+	AU_DHE
 	AU_DSS
+	AU_ECCPWD
 	AU_ECDSA
+	AU_EXPORT
 	AU_KEA
 	AU_KRB5
 	AU_KRB5_EXPORT
@@ -109,12 +150,25 @@ type Encryption int
 //go:generate stringer -type=Encryption
 const (
 	ENC_3DES_EDE_CBC Encryption = iota
+	ENC_AES_128
 	ENC_AES_128_CBC
+	ENC_AES_128_CCM
+	ENC_AES_128_CCM_8
 	ENC_AES_128_GCM
+	ENC_AES_256
 	ENC_AES_256_CBC
+	ENC_AES_256_CCM
 	ENC_AES_256_GCM
+	ENC_ARIA_128_CBC
+	ENC_ARIA_128_GCM
+	ENC_ARIA_256_CBC
+	ENC_ARIA_256_GCM
 	ENC_CAMELLIA_128_CBC
+	ENC_CAMELLIA_128_GCM
 	ENC_CAMELLIA_256_CBC
+	ENC_CAMELLIA_256_GCM
+	ENC_CHACHA20_POLY1305
+	ENC_CHACHA20_POLY1305_256
 	ENC_DES40_CBC
 	ENC_DES_CBC
 	ENC_DES_CBC_40
@@ -128,7 +182,6 @@ const (
 	ENC_RC4_40
 	ENC_RC4_56
 	ENC_SEED_CBC
-	ENC_CHACHA20_POLY1305_256
 )
 
 type Mac int
