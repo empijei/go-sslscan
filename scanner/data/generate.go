@@ -39,9 +39,11 @@ func ParseCipher(line []string) Cipher {
 	for _, s := range en {
 		switch {
 		case strings.Contains(s, "3DES"):
-			i = 128
-		case strings.Contains(s, "DES"):
+			i = 112
+		case strings.Contains(s, "DES40"):
 			i = 40
+		case strings.Contains(s, "DES"):
+			i = 56
 		case strings.Contains(s, "CHACHA"):
 			i = 256
 		default:

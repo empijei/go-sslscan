@@ -1,9 +1,11 @@
 package main
 
 import (
+	"bufio"
 	"crypto/tls"
 	"fmt"
 	"log"
+	"os"
 
 	"github.com/empijei/go-sslscan/scanner"
 )
@@ -29,4 +31,7 @@ func main() {
 	}()
 	fmt.Println(scanner.ScanHost("localhost:8043"))
 	fmt.Println(scanner.ScanHost("google.com:443"))
+
+	reader := bufio.NewReader(os.Stdin)
+	_, _ = reader.ReadString('\n')
 }
