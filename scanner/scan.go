@@ -44,6 +44,7 @@ func ScanHost(hostport string) ([]CipherSuite, error) {
 	return found, nil
 }
 
+//TODO if server accepts client's preference find a way to communicate it
 func ScanHostWithProto(hostport string, p ProtVersion) ([]CipherSuite, error) {
 	suites := TLS_CipherSuites.IDsMap()
 	var found []CipherSuite

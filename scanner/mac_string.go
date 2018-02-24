@@ -2,7 +2,7 @@
 
 package scanner
 
-import "fmt"
+import "strconv"
 
 const _Mac_name = "MAC_GOST28147MAC_GOSTR3411MAC_MD5MAC_NULLMAC_SHAMAC_SHA256MAC_SHA384"
 
@@ -10,7 +10,7 @@ var _Mac_index = [...]uint8{0, 13, 26, 33, 41, 48, 58, 68}
 
 func (i Mac) String() string {
 	if i < 0 || i >= Mac(len(_Mac_index)-1) {
-		return fmt.Sprintf("Mac(%d)", i)
+		return "Mac(" + strconv.FormatInt(int64(i), 10) + ")"
 	}
 	return _Mac_name[_Mac_index[i]:_Mac_index[i+1]]
 }

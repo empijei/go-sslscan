@@ -2,7 +2,7 @@
 
 package scanner
 
-import "fmt"
+import "strconv"
 
 const _Protocol_name = "PROT_SSLPROT_TLS"
 
@@ -10,7 +10,7 @@ var _Protocol_index = [...]uint8{0, 8, 16}
 
 func (i Protocol) String() string {
 	if i < 0 || i >= Protocol(len(_Protocol_index)-1) {
-		return fmt.Sprintf("Protocol(%d)", i)
+		return "Protocol(" + strconv.FormatInt(int64(i), 10) + ")"
 	}
 	return _Protocol_name[_Protocol_index[i]:_Protocol_index[i+1]]
 }

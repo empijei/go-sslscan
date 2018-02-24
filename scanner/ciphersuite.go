@@ -3,6 +3,7 @@ package scanner
 import (
 	"sort"
 
+	"github.com/empijei/cli/lg"
 	"github.com/empijei/go-sslscan/scanner/tls_dirty"
 )
 
@@ -33,6 +34,7 @@ func init() {
 		i++
 	}
 	sort.Sort(ByID(AllCiphers))
+	lg.Infof("Loaded ciphers: %d ciphers available\n", len(AllCiphers))
 }
 
 type CipherSuite struct {

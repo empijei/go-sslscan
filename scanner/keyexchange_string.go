@@ -2,15 +2,15 @@
 
 package scanner
 
-import "fmt"
+import "strconv"
 
-const _KeyExchange_name = "KX_DHKX_DHEKX_ECDHKX_ECDHEKX_FORTEZZAKX_KRB5KX_KRB5_EXPORTKX_NULLKX_PSKKX_RSAKX_RSA_EXPORTKX_RSA_EXPORT_1024KX_RSA_FIPSKX_SRPKX_VKO_GOST_R_34_10_2001KX_VKO_GOST_R_34_10_94"
+const _KeyExchange_name = "KX_DHKX_DHEKX_ECCPWDKX_ECDHKX_ECDHEKX_FORTEZZAKX_KRB5KX_KRB5_EXPORTKX_NULLKX_PSKKX_RSAKX_RSA_EXPORTKX_RSA_EXPORT_1024KX_RSA_FIPSKX_SRPKX_VKO_GOST_R_34_10_2001KX_VKO_GOST_R_34_10_94"
 
-var _KeyExchange_index = [...]uint8{0, 5, 11, 18, 26, 37, 44, 58, 65, 71, 77, 90, 108, 119, 125, 149, 171}
+var _KeyExchange_index = [...]uint8{0, 5, 11, 20, 27, 35, 46, 53, 67, 74, 80, 86, 99, 117, 128, 134, 158, 180}
 
 func (i KeyExchange) String() string {
 	if i < 0 || i >= KeyExchange(len(_KeyExchange_index)-1) {
-		return fmt.Sprintf("KeyExchange(%d)", i)
+		return "KeyExchange(" + strconv.FormatInt(int64(i), 10) + ")"
 	}
 	return _KeyExchange_name[_KeyExchange_index[i]:_KeyExchange_index[i+1]]
 }
